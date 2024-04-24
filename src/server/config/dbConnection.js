@@ -21,4 +21,15 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+db.sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+  })
+  .catch((err) => {
+    console.log("Unable to connect to the database: ", err);
+  });
+
+db.sellThruVendor = require("../models/sellThruVendor")(sequelize, Sequelize);
+
 module.exports = db;
